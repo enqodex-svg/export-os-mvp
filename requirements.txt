@@ -1,0 +1,29 @@
+# FastAPI for HTTP APIs
+fastapi==0.115.0
+
+# Uvicorn for ASGI server
+uvicorn[standard]==0.30.6
+
+# SQLAlchemy for ORM (works with Postgres + SQLite)
+SQLAlchemy==2.0.34
+
+# Pydantic for request/response schemas
+pydantic==2.9.2
+
+# python-multipart for handling file uploads
+python-multipart==0.0.9
+
+# ReportLab to generate PDFs for invoice/packing list/labels
+reportlab==4.2.2
+
+# Psycopg for Postgres driver (optional when using Docker)
+psycopg[binary]==3.2.2
+
+# Pytest for tests
+pytest==8.3.3
+
+# HTTPX for integration testing
+httpx==0.27.2
+
+# Ruff for linting
+ruff==0.6.9

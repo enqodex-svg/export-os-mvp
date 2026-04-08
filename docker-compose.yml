@@ -1,0 +1,31 @@
+# Docker Compose file to run Postgres + API server
+services:
+  # Postgres database service
+  db:
+    image: postgres:16
+    environment:
+      # NOTE: For production, use secrets manager instead of env vars.
+      POSTGRES_USER: exportos
+      POSTGRES_PASSWORD: exportos
+      POSTGRES_DB: exportos
+    ports:
+      - "5432:5432"
+    volumes:
+      - exportos_pgdata:/var/lib/postgresql/data
+
+  # Backend API service
+  api:
+    build: .
+    environment:
+      # Database URL pointing to the db service
+      DATABASE_URL: postgresql+psycopg://exportos:exportos@db:5432/exportos
+      # App environment
+      APP_ENV: dev
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+# Named volume for Postgres persistence
+volumes:
+  exportos_pgdata:
